@@ -13,6 +13,7 @@ export default function HowItWorks() {
   const introRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const [stickyHeight, setStickyHeight] = useState(0);
+  const [introHeight, setIntroHeight] = useState(0);
   const stepRefs = useMemo(() => screens.map(() => ({ current: null } as React.RefObject<HTMLDivElement | null>)), []);
   const currentStep = usePhoneScroller(stepRefs);
   useScrollReveal(introRef);
@@ -25,8 +26,17 @@ export default function HowItWorks() {
     observer.observe(sticky);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const intro = introRef.current;
+    if (!intro) return;
+    const updateHeight = () => setIntroHeight(intro.getBoundingClientRect().height);
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(intro);
+    return () => observer.disconnect();
+  }, []);
   const spacerHeight = stickyHeight > 0 ? `${stickyHeight}px` : '1px';
-  return <section className="how" id="how-it-works" aria-labelledby="how-title"><div className="wrap">
+  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--intro-h': `${introHeight}px` } as React.CSSProperties}><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef}>
