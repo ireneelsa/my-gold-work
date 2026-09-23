@@ -21,6 +21,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--ink);color:#fff;padding:12px 18px;border-radius:3px}
 .skip:focus{top:12px}
 .ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ic-fill{fill:currentColor;stroke:none}
 .label{font:700 12.5px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--maroon)}
 
 /* buttons */
@@ -33,6 +34,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .btn-line:hover{background:var(--maroon);border-color:var(--maroon);color:#fff}
 .btn-sm{min-height:46px;padding:0 24px;font-size:13px}
 .btn .ic{width:19px;height:19px}
+
+/* floating whatsapp button */
+.fab-whatsapp{position:fixed;right:32px;bottom:32px;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 20px rgba(16,19,17,.28);z-index:90;transition:transform .15s ease,box-shadow .15s ease}
+.fab-whatsapp:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(16,19,17,.34)}
+.fab-whatsapp .ic{width:30px;height:30px}
 
 /* photo slots: drop images/01.jpg ... 17.jpg next to this file and they replace the placeholders */
 .slot{position:relative;display:block;overflow:hidden;background:var(--ph);color:var(--ink)}
@@ -289,6 +295,10 @@ section{scroll-margin-top:92px}
   /* Get the app and Request a demo stay within thumb reach */
   .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--tint-line)}
   .mbar .btn{flex:1;min-height:48px;padding:0 10px;font-size:12.5px}
+
+  /* clear the fixed Get the app / Request a demo bar */
+  .fab-whatsapp{right:20px;bottom:calc(84px + env(safe-area-inset-bottom));width:56px;height:56px}
+  .fab-whatsapp .ic{width:28px;height:28px}
 }
 @media (max-width:600px){
   :root{--wrap:calc(100% - 40px)}

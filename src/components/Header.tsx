@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Icon } from './Icon';
+import { WHATSAPP_DEMO_URL } from '../constants';
 
 const playUrl = 'https://play.google.com/store/apps/details?id=com.techiearray.delivery';
-const demoUrl = 'https://wa.me/919160591699?text=Hello%20My%20Gold%20Work%2C%20I%20own%20a%20jewellery%20business%20and%20would%20like%20a%20demo.';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function Header() {
     </header>
     <div className="mbar">
       <a className="btn btn-gold" href={playUrl} target="_blank" rel="noopener">Get the app</a>
-      <a className="btn btn-line" href={demoUrl} target="_blank" rel="noopener">Request a demo</a>
+      <a className="btn btn-line" href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener">Request a demo</a>
     </div>
   </>;
 }
