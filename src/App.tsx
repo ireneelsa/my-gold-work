@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import AudienceSection from './components/AudienceSection';
@@ -8,5 +9,11 @@ import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 export default function App() {
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
   return <><Header /><main id="main"><Hero /><AudienceSection /><HowItWorks /><FeaturesSection /><DemoSection /></main><Footer /><FloatingWhatsApp /></>;
 }
