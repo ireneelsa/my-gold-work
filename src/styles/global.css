@@ -76,7 +76,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .how .orn::before,.how .orn::after{border-color:var(--ink)}
 .how .orn i{background:var(--maroon)}
 /* pin the heading below the header so it stays visible while the phone/caption block scrolls through its steps */
-.how .intro{position:sticky;top:92px;z-index:6;padding-bottom:16px;background:var(--gold)}
+.how .intro{position:sticky;top:92px;z-index:6;padding-top:48px;padding-bottom:16px;background:var(--gold)}
 
 /* header */
 .top{position:sticky;top:0;z-index:50;background:var(--maroon);border-bottom:1px solid var(--maroon)}
@@ -134,7 +134,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .phone{grid-area:phone;width:auto;height:var(--phone-h,568px);aspect-ratio:9/19.5;padding:9px;border-radius:40px;background:var(--ink);box-shadow:0 24px 48px rgba(16,19,17,.22)}
 .phone .slot{position:relative;width:100%;height:100%;border-radius:31px;background:#F7F0DC;overflow:hidden}
 .scroller{display:block;margin-top:72px}
-.sc-sticky{position:sticky;top:calc(92px + var(--intro-h, 0px));z-index:5;display:grid;grid-template-columns:auto 420px;grid-template-areas:"phone caption" "dots dots";align-items:center;justify-content:center;column-gap:64px;row-gap:28px;padding:32px 0 40px;background:var(--gold)}
+.sc-sticky{position:sticky;top:calc(92px + var(--intro-h, 0px));z-index:5;display:grid;grid-template-columns:auto 420px;grid-template-areas:"phone caption" "dots dots";align-items:center;justify-content:center;column-gap:64px;row-gap:16px;padding:16px 0 24px;background:var(--gold)}
 .sc-caption{grid-area:caption;position:relative;min-height:230px;text-align:left}
 .sc-caption-item{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity .35s ease}
 .sc-caption-item.on{opacity:1}
@@ -266,7 +266,7 @@ section{scroll-margin-top:92px}
   .step h3{font-size:42px}
   .arr{transform:rotate(90deg);margin:28px 0}
   .scroller{margin-top:48px}
-  .how .intro{position:static;padding-bottom:0}
+  .how .intro{position:static;padding-top:0;padding-bottom:0}
   .sc-sticky{top:72px;display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 0 22px}
   .sc-caption{width:min(100%,520px);min-height:132px;text-align:center}
   .sc-caption-item{align-items:center}

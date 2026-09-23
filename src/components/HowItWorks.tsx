@@ -10,11 +10,13 @@ const screens = [
 ] as const;
 
 // desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
-// block's own non-phone chrome (padding, row-gap, dots) subtracted from the window to get the space
-// actually left for the phone, capped at its natural/designed height so it doesn't grow oversized either
-const HEADER_HEIGHT = 92;
-const STICKY_CHROME = 124;
-const PHONE_NATURAL_HEIGHT = 568;
+// block's own non-phone chrome (padding, row-gap, dots - the real measured values, no padded-on
+// safety margin) subtracted from the window to get the space actually left for the phone, capped at
+// a generous target height (~380px wide at the 9:19.5 ratio) so it reads as a confident phone mockup
+// on any window tall enough to fit it, rather than growing indefinitely on very tall screens.
+const HEADER_HEIGHT = 93;
+const STICKY_CHROME = 64; // sc-sticky padding (16+24) + row-gap (16) + dots height (8)
+const PHONE_NATURAL_HEIGHT = 823;
 const PHONE_MIN_HEIGHT = 200;
 
 export default function HowItWorks() {
