@@ -20,5 +20,5 @@ const paths: Record<IconName, React.ReactNode> = {
 };
 
 export function Icon({ name, ...props }: { name: IconName } & SVGProps<SVGSVGElement>) {
-  return <svg className="ic" aria-hidden="true" {...props}>{paths[name]}</svg>;
+  return <svg className="ic" viewBox="0 0 24 24" aria-hidden="true" {...props}>{paths[name]}</svg>;
 }
