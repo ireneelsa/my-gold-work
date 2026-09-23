@@ -9,11 +9,20 @@ const screens = [
   { title: 'See it live', text: 'The design shows on the customer, live, through the camera.', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
+// desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
+// block's own non-phone chrome (padding, row-gap, dots) subtracted from the window to get the space
+// actually left for the phone, capped at its natural/designed height so it doesn't grow oversized either
+const HEADER_HEIGHT = 92;
+const STICKY_CHROME = 124;
+const PHONE_NATURAL_HEIGHT = 568;
+const PHONE_MIN_HEIGHT = 200;
+
 export default function HowItWorks() {
   const introRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const [stickyHeight, setStickyHeight] = useState(0);
   const [introHeight, setIntroHeight] = useState(0);
+  const [phoneHeight, setPhoneHeight] = useState(PHONE_NATURAL_HEIGHT);
   const stepRefs = useMemo(() => screens.map(() => ({ current: null } as React.RefObject<HTMLDivElement | null>)), []);
   const currentStep = usePhoneScroller(stepRefs);
   useScrollReveal(introRef);
@@ -35,8 +44,17 @@ export default function HowItWorks() {
     observer.observe(intro);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const updatePhoneHeight = () => {
+      const available = window.innerHeight - HEADER_HEIGHT - introHeight - STICKY_CHROME;
+      setPhoneHeight(Math.max(PHONE_MIN_HEIGHT, Math.min(PHONE_NATURAL_HEIGHT, available)));
+    };
+    updatePhoneHeight();
+    window.addEventListener('resize', updatePhoneHeight);
+    return () => window.removeEventListener('resize', updatePhoneHeight);
+  }, [introHeight]);
   const spacerHeight = stickyHeight > 0 ? `${stickyHeight}px` : '1px';
-  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--intro-h': `${introHeight}px` } as React.CSSProperties}><div className="wrap">
+  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--intro-h': `${introHeight}px`, '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef}>

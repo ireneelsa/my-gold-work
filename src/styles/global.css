@@ -131,7 +131,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .node{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:50%;background:#fff;font:400 21px/1 var(--serif);color:var(--maroon);transition:background .3s,color .3s}
 
 /* one-phone scroller: the phone stays put while real screenshots swap as the page scrolls */
-.phone{grid-area:phone;width:262px;aspect-ratio:9/19;padding:9px;border-radius:40px;background:var(--ink);box-shadow:0 24px 48px rgba(16,19,17,.22)}
+.phone{grid-area:phone;width:auto;height:var(--phone-h,568px);aspect-ratio:9/19.5;padding:9px;border-radius:40px;background:var(--ink);box-shadow:0 24px 48px rgba(16,19,17,.22)}
 .phone .slot{position:relative;width:100%;height:100%;border-radius:31px;background:#F7F0DC;overflow:hidden}
 .scroller{display:block;margin-top:72px}
 .sc-sticky{position:sticky;top:calc(92px + var(--intro-h, 0px));z-index:5;display:grid;grid-template-columns:auto 420px;grid-template-areas:"phone caption" "dots dots";align-items:center;justify-content:center;column-gap:64px;row-gap:28px;padding:32px 0 40px;background:var(--gold)}
@@ -215,7 +215,6 @@ section{scroll-margin-top:92px}
 /* ---------- phones and tablets ---------- */
 .menu,.mbar{display:none}
 @media (max-width:1100px){
-  .phone{width:218px}
   .phone.lg{width:262px}
 }
 @media (max-width:1000px){
@@ -271,7 +270,7 @@ section{scroll-margin-top:92px}
   .sc-sticky{top:72px;display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 0 22px}
   .sc-caption{width:min(100%,520px);min-height:132px;text-align:center}
   .sc-caption-item{align-items:center}
-  .phone{width:200px;padding:8px;border-radius:36px}
+  .phone{width:200px;height:auto;padding:8px;border-radius:36px}
   .phone .slot{border-radius:29px}
 
   /* features */
