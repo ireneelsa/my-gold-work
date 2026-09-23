@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Icon } from './Icon';
 
 const features = [
-  ['12.jpg', 'Hand holding a phone with LIVE TRY-ON of a gold necklace on screen', 'camera', 'LIVE TRY-ON', 'Let customers see how a design looks on them through their phone camera.'],
+  ['12.jpg', 'Hand holding a phone showing LIVE TRY-ON of a gold necklace on a woman, with a jewellery shop in the background', 'camera', 'LIVE TRY-ON', 'Let customers see how a design looks on them through their phone camera.'],
   ['13.jpg', 'Phone photographing a gold necklace with a crop frame on screen', 'upload', 'Upload your designs', 'Bring your own jewellery photos into the app. Ready for try-on after approval.'],
   ['14.jpg', 'Phone showing a WhatsApp chat with a jewellery link and shop name', 'share', 'Share with your shop name', 'Send a jewellery link on WhatsApp. Customers try it from home.'],
   ['15.jpg', 'Phone showing a grid of saved gold jewellery designs with hearts', 'heart', 'Save favourite designs', 'Keep selected designs together, ready to show when a customer asks.'],
