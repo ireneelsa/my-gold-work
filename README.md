@@ -1,34 +1,43 @@
 # My Gold Work
 
-My Gold Work is a static marketing landing page for a jewellery app featuring LIVE TRY-ON, catalogue browsing, saved designs, and sharing.
+My Gold Work is a Vite + React + TypeScript marketing site for a jewellery app featuring LIVE TRY-ON, catalogue browsing, saved designs, and sharing.
 
 ## Project structure
 
 ```text
-index.html       Page markup
-css/style.css    Extracted page styles
-js/main.js       Extracted page interactions
-images/          JPG page imagery and logo.png
+index.html          Vite HTML entry point
+src/
+  App.tsx           Application composition
+  components/       Header, hero, content sections, and footer
+  hooks/            Typed scroll reveal and phone scroller hooks
+  styles/global.css Preserved global design stylesheet
+public/images/      JPG page imagery and logo.png
 ```
 
 ## Preview locally
 
-From this folder, run any static HTTP server, for example:
+Install dependencies and start the Vite development server:
 
 ```bash
-python -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open <http://localhost:8000> in a browser. The project has no build step and does not require a `vercel.json` file.
+Then open the local URL printed by Vite. To test the production build locally:
+
+```bash
+npm run build
+npm run preview
+```
 
 ## Deploy with Vercel
 
-Install and authenticate the Vercel CLI if needed, then run:
+From this project folder:
 
 ```bash
 npm install -g vercel
 vercel login
-vercel deploy
+vercel deploy --prod
 ```
 
-Run those commands from this project folder and follow the prompts to link or create the Vercel project.
+Vercel auto-detects Vite. The build command is `npm run build`, and the output directory is `dist`.
