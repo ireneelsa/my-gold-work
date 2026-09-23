@@ -32,7 +32,10 @@ npm run preview
 
 ## Deploy with Vercel
 
-From this project folder:
+The Vercel project (`my-gold-work`) is connected to this repository's `main`
+branch, so pushing to `main` triggers an automatic production deployment.
+
+To deploy manually from this project folder instead:
 
 ```bash
 npm install -g vercel
