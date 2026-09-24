@@ -13,7 +13,9 @@ const screens = [
 // block's own non-phone chrome (padding, row-gap, dots - the real measured values, no padded-on
 // safety margin) subtracted from the window to get the space actually left for the phone, capped at
 // a generous target height (~380px wide at the 9:19.5 ratio) so it reads as a confident phone mockup
-// on any window tall enough to fit it, rather than growing indefinitely on very tall screens.
+// on any window tall enough to fit it, rather than growing indefinitely on very tall screens. The
+// heading above is normal flow (not sticky), so it's fully scrolled away by the time the phone
+// pins flush below the header - its height doesn't factor into this.
 const HEADER_HEIGHT = 93;
 const STICKY_CHROME = 64; // sc-sticky padding (16+24) + row-gap (16) + dots height (8)
 const PHONE_NATURAL_HEIGHT = 823;
@@ -25,7 +27,6 @@ export default function HowItWorks() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const [stickyHeight, setStickyHeight] = useState(0);
-  const [introHeight, setIntroHeight] = useState(0);
   const [phoneHeight, setPhoneHeight] = useState(PHONE_NATURAL_HEIGHT);
   const [isPastRange, setIsPastRange] = useState(false);
   const stepRefs = useMemo(() => screens.map(() => ({ current: null } as React.RefObject<HTMLDivElement | null>)), []);
@@ -41,23 +42,14 @@ export default function HowItWorks() {
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
-    const intro = introRef.current;
-    if (!intro) return;
-    const updateHeight = () => setIntroHeight(intro.getBoundingClientRect().height);
-    updateHeight();
-    const observer = new ResizeObserver(updateHeight);
-    observer.observe(intro);
-    return () => observer.disconnect();
-  }, []);
-  useEffect(() => {
     const updatePhoneHeight = () => {
-      const available = window.innerHeight - HEADER_HEIGHT - introHeight - STICKY_CHROME;
+      const available = window.innerHeight - HEADER_HEIGHT - STICKY_CHROME;
       setPhoneHeight(Math.max(PHONE_MIN_HEIGHT, Math.min(PHONE_NATURAL_HEIGHT, available)));
     };
     updatePhoneHeight();
     window.addEventListener('resize', updatePhoneHeight);
     return () => window.removeEventListener('resize', updatePhoneHeight);
-  }, [introHeight]);
+  }, []);
   useEffect(() => {
     // .phone's box-shadow extends well beyond its own box (blur + offset), and no ancestor can
     // clip it with overflow:hidden without breaking position:sticky (any ancestor with overflow
@@ -87,7 +79,7 @@ export default function HowItWorks() {
     };
   }, []);
   const spacerHeight = stickyHeight > 0 ? `${stickyHeight}px` : '1px';
-  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--intro-h': `${introHeight}px`, '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
+  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef} style={isPastRange ? { visibility: 'hidden' } : undefined}>
