@@ -14,7 +14,8 @@ html{scroll-behavior:smooth;overflow-x:clip}
 body{margin:0;overflow-x:clip;background:#fff;color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 h1,h2,h3,p,figure{margin:0}
 h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
-a{color:inherit;text-decoration:none}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+button,summary,a{touch-action:manipulation}
 a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:3px}
 .wrap{width:var(--wrap);margin-inline:auto}
 .gi{font-style:italic;color:var(--maroon)}
@@ -211,7 +212,7 @@ section{scroll-margin-top:92px}
 
 
 /* ---------- phones and tablets ---------- */
-.menu,.mbar{display:none}
+.menu,.mbar,.call{display:none}
 @media (max-width:1100px){
   .phone.lg{width:262px}
 }
@@ -226,23 +227,31 @@ section{scroll-margin-top:92px}
   .menu{display:block;position:relative}
   .menu summary{list-style:none;display:grid;place-items:center;width:46px;height:46px;border:1.5px solid rgba(255,255,255,.55);border-radius:3px;cursor:pointer;color:#fff}
   .menu summary::-webkit-details-marker{display:none}
-  .menu .drop{position:absolute;left:0;top:58px;z-index:60;min-width:240px;padding:8px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--tint-line);border-radius:4px}
-  .menu .drop a{display:flex;align-items:center;min-height:48px;padding:0 14px;font:500 14px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase}
+  .menu .drop{gap:0;position:absolute;left:0;top:58px;z-index:60;min-width:240px;padding:8px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--tint-line);border-radius:4px}
+  .menu .drop a{display:flex;align-items:center;min-height:48px;padding:0 14px;font:500 14px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--ink);border-radius:3px}
+  .menu .drop a:hover,.menu .drop a:active{background:var(--tint);color:var(--maroon)}
   .top .brand{justify-self:center;gap:10px}
   .top .cta-r{justify-self:end}
   .mark{width:40px;height:40px}
   .brand b{font-size:23px;white-space:nowrap}
   .brand small{font-size:11.5px;white-space:nowrap}
   .btn-sm{padding:0 14px;font-size:12px;letter-spacing:.09em}
+  .top .cta-r .btn{display:none}
+  .call{display:grid;place-items:center;width:46px;height:46px;border:1.5px solid rgba(255,255,255,.55);border-radius:3px;color:#fff}
+  .call:active,.menu summary:active{background:rgba(255,255,255,.14)}
 
   /* hero: text first, photo below */
-  .hero{padding:32px 0 56px}
-  .hero .wrap{grid-template-columns:1fr;gap:52px}
+  .hero{padding:28px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
   .hero-copy{max-width:none;padding-left:0}
   .hero h1{font-size:clamp(40px,9vw,58px)}
   .hero .lead{font-size:20px}
   .cta{flex-direction:column}
   .cta .btn{width:100%}
+  .hero .cta{gap:4px;margin-top:24px}
+  .hero .cta .btn-line{min-height:46px;border-color:transparent;text-decoration:underline;text-decoration-color:var(--gold-deep);text-underline-offset:6px;text-decoration-thickness:1.5px}
+  .hero .cta .btn-line:hover{background:none;color:var(--maroon)}
+  .hero .gp{margin-top:14px;padding-top:14px}
   .hero-art{width:min(100%,480px);margin-inline:auto}
 
   .strip .wrap{grid-template-columns:1fr}
@@ -256,7 +265,8 @@ section{scroll-margin-top:92px}
   .card .over{padding:20px}
   .card .over h3{font-size:24px}
   .card .over p{font-size:15px}
-  .card .over .ic{width:24px;height:24px;margin-bottom:10px}
+  .card .over .ic{width:24px;height:24px;margin-bottom:10px;color:var(--gold)}
+  .card::before{background:linear-gradient(to top,rgba(16,19,17,.86) 0%,rgba(16,19,17,.55) 38%,rgba(16,19,17,0) 70%)}
 
   /* how it works */
   .steps{flex-direction:column;align-items:center;margin-top:40px}
@@ -267,7 +277,7 @@ section{scroll-margin-top:92px}
   .sc-sticky{top:72px;display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 0 22px}
   .sc-caption{width:min(100%,520px);min-height:132px;text-align:center}
   .sc-caption-item{align-items:center}
-  .phone{width:200px;height:auto;padding:8px;border-radius:36px}
+  .phone{width:clamp(120px,calc((100svh - 370px) * .4615),232px);height:auto;padding:8px;border-radius:36px}
   .phone .slot{border-radius:29px}
 
   /* features */
@@ -296,18 +306,22 @@ section{scroll-margin-top:92px}
   .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--tint-line)}
   .mbar .btn{flex:1;min-height:48px;padding:0 10px;font-size:12.5px}
 
-  /* clear the fixed Get the app / Request a demo bar */
-  .fab-whatsapp{right:20px;bottom:calc(84px + env(safe-area-inset-bottom));width:56px;height:56px}
-  .fab-whatsapp .ic{width:28px;height:28px}
+  /* the bar's Request a demo already opens WhatsApp, so the floating button would only cover content */
+  .fab-whatsapp{display:none}
 }
 @media (max-width:600px){
   :root{--wrap:calc(100% - 40px)}
-  .cards3{grid-template-columns:1fr}
-  .cards3 .r45{aspect-ratio:6/7}
-  .card .over h3{font-size:28px}
-  .cards2{grid-template-columns:1fr}
-  .cards2 .r32{aspect-ratio:5/6}
-  .cards2 .slot img{object-position:88% 50%}
+  /* audience + feature cards become swipeable rows with the next card peeking in */
+  .cards3,.cards2{display:grid;grid-template-columns:none;grid-auto-flow:column;gap:14px;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards3::-webkit-scrollbar,.cards2::-webkit-scrollbar{display:none}
+  .cards3{grid-auto-columns:78%}
+  .cards2{grid-auto-columns:84%}
+  .cards3>.slot,.cards2>.slot{scroll-snap-align:start}
+  .cards3 .r45{aspect-ratio:4/5}
+  .cards2 .r32{aspect-ratio:3/4}
+  .card .over h3{font-size:26px}
+  .cards2 .card .over h3{font-size:25px}
+  .cards2 .slot img{object-position:86% 50%}
   .card .over{padding:22px}
   .demo .txt{padding:48px 20px 40px}
 }
@@ -325,4 +339,11 @@ section{scroll-margin-top:92px}
 }
 @media (max-width:340px){
   .brand b{display:none}
+}
+@media (max-width:1000px) and (max-height:620px){
+  .sc-sticky{gap:10px;padding:12px 0 14px}
+  .sc-caption{min-height:112px}
+  .sc-caption-item{gap:8px}
+  .sc-caption-item h3{font-size:30px}
+  .node{width:34px;height:34px;font-size:17px}
 }
