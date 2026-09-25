@@ -334,8 +334,13 @@ section{scroll-margin-top:92px}
   .cards2 .r32{aspect-ratio:3/4}
   .card .over h3{font-size:26px}
   .cards2 .card .over h3{font-size:25px}
-  .cards2 .slot img{object-position:86% 50%}
+  /* feature photos have the phone running the full height, so show the photo on top and the text below it */
+  .cards2 .card{background:var(--ink)}
+  .cards2 .card::before{display:none}
+  .cards2 .slot img{inset:0 0 auto 0;height:48%;object-position:70% 50%;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent);mask-image:linear-gradient(to bottom,#000 82%,transparent)}
   .card .over{padding:22px}
+  .cards2 .card .over{padding:18px 20px}
+  .cards2 .card .over .ic{margin-bottom:8px}
   .demo .txt{padding:48px 20px 40px}
 }
 @media (max-width:520px){
