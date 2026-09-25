@@ -83,8 +83,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 /* header */
 .top{position:sticky;top:0;z-index:50;background:var(--maroon);border-bottom:1px solid var(--maroon)}
 .top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px}
-.top nav{display:flex;gap:34px}
-.top nav a{display:inline-flex;align-items:center;min-height:44px;font:500 13.5px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:#fff}
+.top nav{display:flex;gap:clamp(18px,2.4vw,34px)}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap;font:500 13.5px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:#fff}
 .top nav a:hover{color:var(--gold)}
 .top .cta-r{justify-self:end}
 .brand{display:flex;align-items:center;gap:14px;min-height:44px}
@@ -111,7 +111,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 @media (min-width:1001px){
   /* the arch + gold backing run to ~115% of the art's height, so reserve that room inside the hero,
      and shrink the art on short windows so the whole picture stays on screen above the strip */
-  .hero-art{margin-bottom:15%;justify-self:end;width:min(100%,max(340px,calc((100svh - 220px) / 1.15)))}
+  .hero .wrap{grid-template-columns:minmax(0,520px) auto;justify-content:center;column-gap:clamp(56px,7vw,110px)}
+  .hero-art{margin-bottom:15%;width:max(340px,min(600px,calc((100svh - 220px) / 1.15)))}
 }
 
 /* strip under the hero: the supporting text, as three lines */
@@ -223,6 +224,10 @@ section{scroll-margin-top:92px}
 .menu,.mbar,.call{display:none}
 @media (max-width:1100px){
   .phone.lg{width:262px}
+}
+@media (min-width:1001px) and (max-width:1150px){
+  .top nav{gap:16px}
+  .top nav a{font-size:12px;letter-spacing:.07em}
 }
 @media (max-width:1000px){
   :root{--wrap:calc(100% - 48px)}
