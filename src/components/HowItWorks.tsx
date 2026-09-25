@@ -20,6 +20,9 @@ const HEADER_HEIGHT = 93;
 const STICKY_CHROME = 64; // sc-sticky padding (16+24) + row-gap (16) + dots height (8)
 const PHONE_NATURAL_HEIGHT = 823;
 const PHONE_MIN_HEIGHT = 200;
+// each of the steps gets this fraction of the block's height as scroll distance while the phone is
+// pinned, so the pinned stretch is short and every step is shown for the same distance
+const STEP_SCROLL_RATIO = 0.6;
 const PHONE_SHADOW_REACH = 80; // box-shadow "0 24px 48px" reaches ~72px past the box; rounded up for AA/blur
 
 export default function HowItWorks() {
@@ -30,7 +33,7 @@ export default function HowItWorks() {
   const [phoneHeight, setPhoneHeight] = useState(PHONE_NATURAL_HEIGHT);
   const [isPastRange, setIsPastRange] = useState(false);
   const stepRefs = useMemo(() => screens.map(() => ({ current: null } as React.RefObject<HTMLDivElement | null>)), []);
-  const currentStep = usePhoneScroller(stepRefs);
+  const currentStep = usePhoneScroller(stepRefs, stickyRef);
   useScrollReveal(introRef);
   useEffect(() => {
     const sticky = stickyRef.current;
@@ -78,7 +81,7 @@ export default function HowItWorks() {
       window.removeEventListener('resize', onScroll);
     };
   }, []);
-  const spacerHeight = stickyHeight > 0 ? `${stickyHeight}px` : '1px';
+  const spacerHeight = stickyHeight > 0 ? `${Math.round(stickyHeight * STEP_SCROLL_RATIO)}px` : '1px';
   return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
