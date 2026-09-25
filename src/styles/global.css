@@ -105,6 +105,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .hero-art{position:relative;aspect-ratio:1/1}
 .hero-art>*{position:absolute}
 .gold-arch{background:var(--gold);border-radius:999px 999px 0 0;aspect-ratio:4/5}
+@media (min-width:1001px){
+  /* the arch + gold backing run to ~115% of the art's height, so reserve that room inside the hero,
+     and shrink the art on short windows so the whole picture stays on screen above the strip */
+  .hero-art{margin-bottom:15%;justify-self:end;width:min(100%,max(340px,calc((100svh - 220px) / 1.15)))}
+}
 
 /* strip under the hero: the supporting text, as three lines */
 .strip{background:var(--tint);border-block:1px solid var(--tint-line)}
