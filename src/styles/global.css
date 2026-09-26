@@ -67,8 +67,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .card .over p{margin-top:8px;max-width:22em;font-size:16px;line-height:1.5;color:rgba(255,255,255,.92)}
 .card .over .ic{width:28px;height:28px;margin-bottom:14px;color:var(--maroon);stroke-width:1.5}
 /* feature photos put the phone on the right, so keep the text in the left half and off the phone screen */
-@media (min-width:601px){.cards2 .card .over{right:auto;width:60%}.cards2 .card .over h3{font-size:26px}}
-@media (min-width:1101px){.cards2 .card .over{width:52%}.cards2 .card .over h3{font-size:32px}}
+/* small frosted-glass box behind each feature title + description */
+.cards2 .card .over{left:16px;right:auto;bottom:16px;width:fit-content;max-width:calc(100% - 32px);padding:18px 22px;border-radius:18px;background:rgba(255,255,255,.13);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
+@media (min-width:601px){.cards2 .card .over{max-width:52%;padding:16px 18px}.cards2 .card .over h3{font-size:24px}.cards2 .card .over p{font-size:14.5px}}
+@media (min-width:601px) and (max-width:900px){.cards2 .card .over{max-width:60%;padding:14px 16px;left:12px;bottom:12px}.cards2 .card .over h3{font-size:20px}.cards2 .card .over p{font-size:13.5px;margin-top:6px}}
+@media (min-width:1101px){.cards2 .card .over{max-width:52%}.cards2 .card .over h3{font-size:32px}}
 .card .ph{padding:12% 14% 34%}
 
 /* section intro: centred label, heading, small ornament */
