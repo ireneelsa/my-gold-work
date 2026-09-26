@@ -4,7 +4,7 @@ import { Icon } from './Icon';
 
 const features = [
   ['12.jpg', 'Hand holding a phone showing the LIVE TRY-ON screen with a gold necklace on a woman, and a row of other necklace options below, in a busy jewellery shop with staff at the counters', 'camera', 'LIVE TRY-ON', 'Let customers see how a design looks on them through their phone camera.'],
-  ['13.jpg', 'Phone photographing a gold necklace with a crop frame on screen', 'upload', 'Upload your designs', 'Bring your own jewellery photos into the app. Ready for try-on after approval.'],
+  ['13.jpg', 'Hand holding a phone whose camera frames a gold necklace on a display bust, in a busy jewellery shop with staff at the counter', 'upload', 'Upload your designs', 'Bring your own jewellery photos into the app. Ready for try-on after approval.'],
   ['14.jpg', 'Hand holding a phone showing a gold necklace product page while a finger taps the Share button, jewellery shop in the background', 'share', 'Share with your shop name', 'Send a jewellery link on WhatsApp. Customers try it from home.'],
   ['15.jpg', 'Hand tapping the heart on a gold necklace product page, with a "Product added to Saved" message, jewellery shop in the background', 'heart', 'Save favourite designs', 'Keep selected designs together, ready to show when a customer asks.'],
 ] as const;
