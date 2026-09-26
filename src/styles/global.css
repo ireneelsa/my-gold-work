@@ -103,7 +103,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .hero .lead2{margin-top:10px;max-width:24em;font-size:17px;color:var(--ink2)}
 .hero .lead2 b{font-weight:700;color:var(--bronze);letter-spacing:.04em;white-space:nowrap}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
-.gp{display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--tint-line);font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
+.gp{display:flex;align-items:center;gap:10px;text-wrap:balance;margin-top:18px;padding-top:16px;border-top:1px solid var(--tint-line);font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
 .gp .ic{width:17px;height:17px;color:var(--maroon)}
 .hero-art{position:relative;aspect-ratio:1/1}
 .hero-art>*{position:absolute}
