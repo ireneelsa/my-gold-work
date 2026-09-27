@@ -340,6 +340,16 @@ section{scroll-margin-top:92px}
   .cards2 .slot img{object-position:86% 50%}
   .card .over{padding:22px}
   .demo .txt{padding:48px 20px 40px}
+
+  /* hero: tighten the stack so the photo isn't pushed below the fold on phone-height screens */
+  .hero{padding:8px 0 32px}
+  .hero .wrap{gap:12px}
+  .hero h1{margin-top:6px}
+  .hero .lead{margin-top:10px}
+  .hero .lead2{margin-top:6px}
+  .hero .cta{margin-top:12px}
+  .hero .gp{margin-top:6px;padding-top:6px}
+  .hero-art{width:min(82%,420px)}
 }
 @media (max-width:520px){
   .brand small{display:none}
