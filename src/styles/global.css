@@ -349,7 +349,11 @@ section{scroll-margin-top:92px}
   .hero .lead2{margin-top:6px}
   .hero .cta{margin-top:12px}
   .hero .gp{margin-top:6px;padding-top:6px}
-  .hero-art{width:min(82%,420px)}
+  /* .gold-arch is aspect-ratio:4/5 inside a square .hero-art, so it always overflows past
+     hero-art's own bottom by ~14.5% of hero-art's size - reserve that as margin so it lands
+     in the hero section's own space instead of overlapping the strip below (percentage
+     margins resolve against the containing block's width, hence 82%*14.5% =~ 12%) */
+  .hero-art{width:min(82%,420px);margin-bottom:12%}
 }
 @media (max-width:520px){
   .brand small{display:none}
