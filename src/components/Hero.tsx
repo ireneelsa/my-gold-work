@@ -1,14 +1,12 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Icon } from './Icon';
-import MehendiFlourish from './MehendiFlourish';
 
 export default function Hero() {
   const stripRef = useRef<HTMLDivElement>(null);
   useScrollReveal(stripRef);
   return <><section className="hero" aria-labelledby="hero-title"><div className="wrap">
     <div className="hero-copy">
-      <MehendiFlourish className="mehendi" />
       <p className="label">Made for jewellery shop owners</p>
       <h1 id="hero-title">Turn a design<br />into <em className="gi" style={{ whiteSpace: 'nowrap' }}>a decision.</em></h1>
       <p className="lead">Let your customers fall in love with the look.</p>
