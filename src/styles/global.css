@@ -336,8 +336,10 @@ section{scroll-margin-top:92px}
   .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--tint-line)}
   .mbar .btn{flex:1;min-height:48px;padding:0 10px;font-size:12.5px}
 
-  /* the bar's Request a demo already opens WhatsApp, so the floating button would only cover content */
-  .fab-whatsapp{display:none}
+  /* clear the fixed Get the app / Request a demo bar instead of hiding: keep the always-visible
+     WhatsApp entry point, just shrink it and sit it 16px above the bar's own height */
+  .fab-whatsapp{right:20px;bottom:calc(84px + env(safe-area-inset-bottom));width:56px;height:56px}
+  .fab-whatsapp .ic{width:28px;height:28px}
 }
 @media (max-width:600px){
   :root{--wrap:calc(100% - 40px)}
