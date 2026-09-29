@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Icon } from './Icon';
+import { getAppStoreLink } from '../constants/links';
 
 export default function Hero() {
   const stripRef = useRef<HTMLDivElement>(null);
@@ -12,7 +13,7 @@ export default function Hero() {
       <p className="lead">Let your customers fall in love with the look.</p>
       <p className="lead2">Bring your catalogue to life with <b>LIVE TRY-ON.</b></p>
       <div className="cta">
-        <a className="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.techiearray.delivery" target="_blank" rel="noopener"><Icon name="download" />Download the app</a>
+        <a className="btn btn-gold" href={getAppStoreLink()} target="_blank" rel="noopener"><Icon name="download" />Download the app</a>
         <a className="btn btn-line" href="#how-it-works">See how it works</a>
       </div>
       <p className="gp"><Icon name="play" />Available on Play Store and App Store</p>

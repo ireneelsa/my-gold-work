@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
-import { WHATSAPP_DEMO_URL } from '../constants';
-
-const playUrl = 'https://play.google.com/store/apps/details?id=com.techiearray.delivery';
+import { getAppStoreLink, TEL_URL } from '../constants/links';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,12 +40,8 @@ export default function Header() {
           <span className="mark" aria-hidden="true" />
           <span><b>My Gold Work</b><small>The Jewellery app of India</small></span>
         </a>
-        <div className="cta-r"><a className="call" href="tel:+919160591699" aria-label="Call us"><Icon name="phone" /></a><a className="btn btn-gold btn-sm" href={playUrl} target="_blank" rel="noopener">Get the app</a></div>
+        <div className="cta-r"><a className="call" href={TEL_URL} aria-label="Call us"><Icon name="phone" /></a><a className="btn btn-gold btn-sm" href={getAppStoreLink()} target="_blank" rel="noopener">Get the app</a></div>
       </div>
     </header>
-    <div className="mbar">
-      <a className="btn btn-gold" href={playUrl} target="_blank" rel="noopener">Get the app</a>
-      <a className="btn btn-line" href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener">Request a demo</a>
-    </div>
   </>;
 }

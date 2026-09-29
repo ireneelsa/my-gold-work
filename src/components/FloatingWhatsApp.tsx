@@ -1,5 +1,5 @@
 import { Icon } from './Icon';
-import { WHATSAPP_DEMO_URL } from '../constants';
+import { WHATSAPP_DEMO_URL } from '../constants/links';
 
 export default function FloatingWhatsApp() {
   return (

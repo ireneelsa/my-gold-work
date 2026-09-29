@@ -197,10 +197,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .fstrip .ic{width:28px;height:28px;color:var(--maroon);stroke-width:1.4}
 .fstrip small{display:block;font:700 11.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--maroon)}
 .fstrip span{display:block;font-size:16.5px;font-weight:500}
-.foot .cols{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:64px;margin-top:64px}
+.foot .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px;margin-top:64px}
 .foot .legal{margin-top:16px;font-size:15px;color:var(--ink2)}
 .foot h4{margin:0 0 10px;font:700 12.5px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--maroon)}
 .foot .links a{display:flex;align-items:center;min-height:44px;font-size:16.5px}
+.foot .social a{gap:10px}
+.foot .social .ic{width:18px;height:18px;color:var(--maroon);stroke-width:1.6}
 .foot .end{margin-top:52px;padding-top:24px;border-top:1px solid var(--tint-line);font-size:14px;color:var(--ink2)}
 section{scroll-margin-top:92px}
 
@@ -236,7 +238,7 @@ section{scroll-margin-top:92px}
 
 
 /* ---------- phones and tablets ---------- */
-.menu,.mbar,.call{display:none}
+.menu,.call{display:none}
 @media (max-width:1100px){
   .phone.lg{width:262px}
 }
@@ -246,7 +248,6 @@ section{scroll-margin-top:92px}
 }
 @media (max-width:1000px){
   :root{--wrap:calc(100% - 48px)}
-  body{padding-bottom:84px}
   section{scroll-margin-top:80px}
 
   /* header: menu button, logo, Get the app */
@@ -332,13 +333,9 @@ section{scroll-margin-top:92px}
   .foot .cols{grid-template-columns:1fr;gap:32px;margin-top:40px}
   .foot .end{margin-top:36px}
 
-  /* Get the app and Request a demo stay within thumb reach */
-  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--tint-line)}
-  .mbar .btn{flex:1;min-height:48px;padding:0 10px;font-size:12.5px}
-
-  /* clear the fixed Get the app / Request a demo bar instead of hiding: keep the always-visible
-     WhatsApp entry point, just shrink it and sit it 16px above the bar's own height */
-  .fab-whatsapp{right:20px;bottom:calc(84px + env(safe-area-inset-bottom));width:56px;height:56px}
+  /* no fixed bottom bar on mobile any more, so the floating button just needs its own
+     thumb-reachable spacing rather than clearance for a bar that no longer exists */
+  .fab-whatsapp{right:20px;bottom:calc(20px + env(safe-area-inset-bottom));width:56px;height:56px}
   .fab-whatsapp .ic{width:28px;height:28px}
 }
 @media (max-width:600px){
