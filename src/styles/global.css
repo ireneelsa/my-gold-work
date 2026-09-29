@@ -10,7 +10,11 @@
   --icon:url(/images/logo.png);
 }
 *{box-sizing:border-box}
-html{overflow-x:clip}
+/* stop Chrome/Samsung Internet on real Android phones auto-inflating text size ("font boosting").
+   That inflation is font-size-only, so it doesn't touch padding/gaps/button heights, and lines wrap
+   sooner - the exact "cramped" look devtools' mobile emulation never reproduces, since it simulates
+   viewport size but not this on-device text-autosizing behaviour. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:clip}
 body{margin:0;overflow-x:clip;background:#fff;color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 h1,h2,h3,p,figure{margin:0}
 h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
