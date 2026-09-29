@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 // the form itself, then picking a category, then picking a product type, then the existing photo
 // already used for this card. Self-contained: FeaturesSection only swaps the <img> for this.
 const IMAGES = [
-  { src: '/images/add-catalogue-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form, with Product Name, Category, Product Type and an Add Product image field, jewellery shop in the background' },
-  { src: '/images/category-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Category list, with options like Diamond Jewellery, Fancy Designs and Rose Gold, jewellery shop in the background' },
-  { src: '/images/product-types-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Product Types list, with options like Diamond Jewellery1, Rose Gold and Bridal Jewellery, jewellery shop in the background' },
-  { src: '/images/13.jpg', alt: 'Hand holding a phone whose camera frames a gold necklace on a display bust, in a busy jewellery shop with staff at the counter' },
+  { src: '/images/add-catalogue-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form, with Product Name, Category, Product Type and an Add Product image field, jewellery shop in the background', wide: true },
+  { src: '/images/category-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Category list, with options like Diamond Jewellery, Fancy Designs and Rose Gold, jewellery shop in the background', wide: true },
+  { src: '/images/product-types-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Product Types list, with options like Diamond Jewellery1, Rose Gold and Bridal Jewellery, jewellery shop in the background', wide: true },
+  { src: '/images/13.jpg', alt: 'Hand holding a phone whose camera frames a gold necklace on a display bust, in a busy jewellery shop with staff at the counter', wide: false },
 ] as const;
 
 const INTERVAL_MS = 3000;
@@ -49,7 +49,7 @@ export function UploadDesignsSequence() {
   };
 
   return <div className="seq" ref={rootRef}>
-    {IMAGES.map((image, i) => <img key={image.src} className={`seq-img ${i === index ? 'on' : ''}`} src={image.src} alt={image.alt} loading="lazy" />)}
+    {IMAGES.map((image, i) => <img key={image.src} className={`seq-img ${image.wide ? 'seq-img-wide' : ''} ${i === index ? 'on' : ''}`} src={image.src} alt={image.alt} loading="lazy" />)}
     <div className="seq-dots">
       {IMAGES.map((image, i) => <button
         key={image.src}
