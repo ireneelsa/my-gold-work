@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Cycles the "Upload your designs" feature card through the steps of adding a catalogue item:
-// picking a product type, picking a category, then the form itself, then the existing photo
+// the form itself, then picking a category, then picking a product type, then the existing photo
 // already used for this card. Self-contained: FeaturesSection only swaps the <img> for this.
 const IMAGES = [
-  { src: '/images/add-catalogue-product-types.jpg', alt: 'The Add Catalogue form’s Product Types list, with options like Diamond Jewellery1, Rose Gold and Bridal Jewellery' },
-  { src: '/images/add-catalogue-category.jpg', alt: 'The Add Catalogue form’s Category list, with options like Diamond Jewellery, Fancy Designs and Rose Gold' },
-  { src: '/images/add-catalogue-form.jpg', alt: 'The Add Catalogue form, with Product Name, Category, Product Type and an Add Product image field' },
+  { src: '/images/add-catalogue-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form, with Product Name, Category, Product Type and an Add Product image field, jewellery shop in the background' },
+  { src: '/images/category-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Category list, with options like Diamond Jewellery, Fancy Designs and Rose Gold, jewellery shop in the background' },
+  { src: '/images/product-types-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form’s Product Types list, with options like Diamond Jewellery1, Rose Gold and Bridal Jewellery, jewellery shop in the background' },
   { src: '/images/13.jpg', alt: 'Hand holding a phone whose camera frames a gold necklace on a display bust, in a busy jewellery shop with staff at the counter' },
 ] as const;
 

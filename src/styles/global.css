@@ -78,9 +78,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .seq{position:absolute;inset:0}
 .seq-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
 .seq-img.on{opacity:1}
-/* these are tall phone screenshots, not the wide shop photos the card's other pan/zoom rules were
-   tuned for, so pin them to the top (where the title/labels are) at every breakpoint, undoing those */
-.cards2 .slot .seq-img{object-position:center top;transform:none}
 .seq-dots{position:absolute;right:16px;bottom:16px;z-index:4;display:flex;gap:8px}
 .seq-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s,transform .2s}
 .seq-dots button.on{background:#fff;transform:scale(1.3)}
