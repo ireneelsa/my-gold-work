@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { UploadDesignsSequence } from './UploadDesignsSequence';
+import { ShareSequence } from './ShareSequence';
 
 const features = [
   ['12.jpg', 'Hand holding a phone showing the LIVE TRY-ON screen with a gold necklace on a woman, and a row of other necklace options below, in a busy jewellery shop with staff at the counters', 'LIVE TRY-ON', 'Let customers see how a design looks on them through their phone camera.'],
@@ -16,6 +17,6 @@ export default function FeaturesSection() {
   useScrollReveal(cardsRef);
   return <section className="feat" id="features" aria-labelledby="feat-title"><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">Features</p><h2 id="feat-title">Everything you need to <em className="gi">show your jewellery.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
-    <div className="cards2 reveal-stagger" ref={cardsRef}>{features.map(([image, alt, title, text]) => <figure className="slot r32 card has-img" key={image}>{image === '13.jpg' ? <UploadDesignsSequence /> : <img src={`/images/${image}`} alt={alt} loading="lazy" />}<div className="over"><h3>{title}</h3><p>{text}</p></div></figure>)}</div>
+    <div className="cards2 reveal-stagger" ref={cardsRef}>{features.map(([image, alt, title, text]) => <figure className="slot r32 card has-img" key={image}>{image === '13.jpg' ? <UploadDesignsSequence /> : image === '14.jpg' ? <ShareSequence /> : <img src={`/images/${image}`} alt={alt} loading="lazy" />}<div className="over"><h3>{title}</h3><p>{text}</p></div></figure>)}</div>
   </div></section>;
 }
