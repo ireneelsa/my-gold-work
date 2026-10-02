@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-type IconName = 'play' | 'download' | 'phone' | 'chat' | 'camera' | 'upload' | 'share' | 'heart' | 'bag' | 'gem' | 'shop' | 'menu' | 'spark' | 'whatsapp' | 'instagram' | 'facebook' | 'youtube';
+type IconName = 'play' | 'download' | 'phone' | 'chat' | 'camera' | 'upload' | 'share' | 'heart' | 'bag' | 'necklace' | 'shop' | 'menu' | 'spark' | 'whatsapp' | 'instagram' | 'facebook' | 'youtube';
 
 const paths: Record<IconName, React.ReactNode> = {
   play: <path d="M7 4.5v15l12-7.5z" />,
@@ -12,7 +12,7 @@ const paths: Record<IconName, React.ReactNode> = {
   share: <><circle cx="6" cy="12" r="2.5" /><circle cx="17" cy="6" r="2.5" /><circle cx="17" cy="18" r="2.5" /><path d="M8.2 10.8l6.6-3.6" /><path d="M8.2 13.2l6.6 3.6" /></>,
   heart: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
   bag: <><path d="M5 8h14l-1 12H6L5 8z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></>,
-  gem: <><path d="M6 4h12l3 5-9 11L3 9z" /><path d="M3 9h18" /><path d="M9 4l-2 5 5 11 5-11-2-5" /></>,
+  necklace: <><path d="M4 4.5c0 6.5 3.6 10 8 10s8-3.5 8-10" /><path d="M12 14.5v2" /><circle cx="12" cy="19" r="2" /></>,
   shop: <><path d="M4 9l1.5-5h13L20 9" /><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9" /><path d="M5.5 12v8h13v-8" /><path d="M10 20v-4.5h4V20" /></>,
   menu: <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>,
   spark: <path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z" />,
