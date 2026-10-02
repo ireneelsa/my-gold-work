@@ -19,7 +19,7 @@ export default function Hero() {
     </div>
     <div className="hero-art">
       <div className="gold-arch" style={{ left: 'auto', right: 0, top: '7%', width: '86%' }} />
-      <figure className="slot arch r45 has-img" style={{ right: '4%', top: '2%', width: '86%' }}><img src="/images/01.jpg" alt="Smiling Indian man pointing at a phone showing a woman wearing a gold necklace, jewellery shop in the background" /><figcaption className="ph"><b>IMAGE 01</b><span>Hero. Smiling Indian man pointing at a phone. Necklace shown on the phone screen, jewellery shop in the background.</span></figcaption></figure>
+      <figure className="slot arch r45 has-img" style={{ right: '4%', top: '2%', width: '86%' }}><img src="/images/01.jpg" alt="Smiling jewellery shop owner pointing at a phone showing a customer's own face with a gold necklace, the customer looking at the phone, jewellery shop in the background" /><figcaption className="ph"><b>IMAGE 01</b><span>Hero. Shop owner pointing at a phone showing the customer's own face wearing a necklace, customer looking at the phone, jewellery shop in the background.</span></figcaption></figure>
     </div>
   </div></section>
   <div className="strip reveal-stagger" ref={stripRef}><div className="wrap">
