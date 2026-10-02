@@ -16,7 +16,6 @@ export default function Hero() {
         <a className="btn btn-gold" href={getAppStoreLink()} target="_blank" rel="noopener"><Icon name="download" />Download the app</a>
         <a className="btn btn-line" href="#how-it-works">See how it works</a>
       </div>
-      <p className="gp"><Icon name="play" />Available on Play Store and App Store</p>
     </div>
     <div className="hero-art">
       <div className="gold-arch" style={{ left: 'auto', right: 0, top: '7%', width: '86%' }} />

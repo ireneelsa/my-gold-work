@@ -122,8 +122,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .hero .lead2{margin-top:10px;max-width:24em;font-size:17px;color:var(--ink2)}
 .hero .lead2 b{font-weight:700;color:var(--bronze);letter-spacing:.04em;white-space:nowrap}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
-.gp{display:flex;align-items:center;gap:10px;text-wrap:balance;margin-top:18px;padding-top:16px;border-top:1px solid var(--tint-line);font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-.gp .ic{width:17px;height:17px;color:var(--maroon)}
 .hero-art{position:relative;aspect-ratio:1/1}
 .hero-art>*{position:absolute}
 .gold-arch{background:var(--gold);border-radius:999px 999px 0 0;aspect-ratio:4/5}
@@ -284,7 +282,6 @@ section{scroll-margin-top:92px}
   .hero .cta{gap:4px;margin-top:24px}
   .hero .cta .btn-line{min-height:46px;border-color:transparent;text-decoration:underline;text-decoration-color:var(--gold-deep);text-underline-offset:6px;text-decoration-thickness:1.5px}
   .hero .cta .btn-line:hover{background:none;color:var(--maroon)}
-  .hero .gp{margin-top:14px;padding-top:14px}
   .hero-art{width:min(100%,480px);margin-inline:auto}
 
   .strip .wrap{grid-template-columns:1fr}
@@ -368,7 +365,6 @@ section{scroll-margin-top:92px}
   .hero .lead{margin-top:10px}
   .hero .lead2{margin-top:6px}
   .hero .cta{margin-top:12px}
-  .hero .gp{margin-top:6px;padding-top:6px}
   /* .gold-arch is aspect-ratio:4/5 inside a square .hero-art, so it always overflows past
      hero-art's own bottom by ~14.5% of hero-art's size - reserve that as margin so it lands
      in the hero section's own space instead of overlapping the strip below (percentage
