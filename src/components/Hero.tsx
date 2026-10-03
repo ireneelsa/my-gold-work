@@ -23,6 +23,6 @@ export default function Hero() {
     </div>
   </div></section>
   <div className="strip reveal-stagger" ref={stripRef}><div className="wrap">
-    <p className="it"><Icon name="necklace" />Your designs.</p><p className="it"><Icon name="shop" />Your shop name.</p><p className="it"><Icon name="spark" />A whole new way to show jewellery.</p>
+    <p className="it"><Icon name="necklace" />Your designs.</p><p className="it"><Icon name="shop" />Your shop name.</p><p className="it"><Icon name="smartphone" />A whole new way to show jewellery.</p>
   </div></div></>;
 }
