@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { usePhoneScroller } from '../hooks/usePhoneScroller';
+import { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
@@ -7,90 +6,65 @@ const screens = [
   { title: 'See it live', text: 'The design shows on the customer, live, through the camera.', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
-// desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
-// block's own non-phone chrome (padding, row-gap, dots - the real measured values, no padded-on
-// safety margin) subtracted from the window to get the space actually left for the phone, capped at
-// a generous target height (~380px wide at the 9:19.5 ratio) so it reads as a confident phone mockup
-// on any window tall enough to fit it, rather than growing indefinitely on very tall screens. The
-// heading above is normal flow (not sticky), so it's fully scrolled away by the time the phone
-// pins flush below the header - its height doesn't factor into this.
-const HEADER_HEIGHT = 93;
-const STICKY_CHROME = 64; // sc-sticky padding (16+24) + row-gap (16) + dots height (8)
-const PHONE_NATURAL_HEIGHT = 823;
-const PHONE_MIN_HEIGHT = 200;
-// each of the steps gets this fraction of the block's height as scroll distance while the phone is
-// pinned, so the pinned stretch is short and every step is shown for the same distance
-const STEP_SCROLL_RATIO = 0.6;
-const PHONE_SHADOW_REACH = 80; // box-shadow "0 24px 48px" reaches ~72px past the box; rounded up for AA/blur
+const INTERVAL_MS = 3000;
 
+// Static, self-contained step sequence (heading -> phone -> caption, all in normal flow, nothing
+// pinned or scrolled away) - same auto-advance/hover-pause/click-to-jump/reduced-motion pattern as
+// ShareSequence and UploadDesignsSequence, so all three "how it works"-style sections behave alike.
 export default function HowItWorks() {
   const introRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const [stickyHeight, setStickyHeight] = useState(0);
-  const [phoneHeight, setPhoneHeight] = useState(PHONE_NATURAL_HEIGHT);
-  const [isPastRange, setIsPastRange] = useState(false);
-  const stepRefs = useMemo(() => screens.map(() => ({ current: null } as React.RefObject<HTMLDivElement | null>)), []);
-  const currentStep = usePhoneScroller(stepRefs, stickyRef);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const pausedRef = useRef(false);
+  const [resetKey, setResetKey] = useState(0);
   useScrollReveal(introRef);
+  useScrollReveal(cardRef);
+
   useEffect(() => {
-    const sticky = stickyRef.current;
-    if (!sticky) return;
-    const updateHeight = () => setStickyHeight(sticky.getBoundingClientRect().height);
-    updateHeight();
-    const observer = new ResizeObserver(updateHeight);
-    observer.observe(sticky);
-    return () => observer.disconnect();
-  }, []);
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => {
+      if (!pausedRef.current) setIndex((current) => (current + 1) % screens.length);
+    }, INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [resetKey]);
+
   useEffect(() => {
-    const updatePhoneHeight = () => {
-      const available = window.innerHeight - HEADER_HEIGHT - STICKY_CHROME;
-      setPhoneHeight(Math.max(PHONE_MIN_HEIGHT, Math.min(PHONE_NATURAL_HEIGHT, available)));
-    };
-    updatePhoneHeight();
-    window.addEventListener('resize', updatePhoneHeight);
-    return () => window.removeEventListener('resize', updatePhoneHeight);
-  }, []);
-  useEffect(() => {
-    // .phone's box-shadow extends well beyond its own box (blur + offset), and no ancestor can
-    // clip it with overflow:hidden without breaking position:sticky (any ancestor with overflow
-    // other than visible becomes the sticky containing block instead of the viewport). So once
-    // the phone itself - including its shadow's reach - has scrolled fully past the viewport,
-    // hide the whole sticky block explicitly. This only affects paint, not position calculations,
-    // so it un-hides correctly on scrolling back up. Based on the phone's own extent (not the
-    // sticky block's, which is taller) so there's no gap where the shadow could still bleed.
-    const phone = phoneRef.current;
-    if (!phone) return;
-    let ticking = false;
-    const update = () => {
-      setIsPastRange(phone.getBoundingClientRect().bottom + PHONE_SHADOW_REACH <= 0);
-      ticking = false;
-    };
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+    const card = cardRef.current;
+    if (!card) return;
+    const pause = () => { pausedRef.current = true; };
+    const resume = () => { pausedRef.current = false; };
+    card.addEventListener('mouseenter', pause);
+    card.addEventListener('mouseleave', resume);
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      card.removeEventListener('mouseenter', pause);
+      card.removeEventListener('mouseleave', resume);
     };
   }, []);
-  const spacerHeight = stickyHeight > 0 ? `${Math.round(stickyHeight * STEP_SCROLL_RATIO)}px` : '1px';
-  return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
+
+  const goTo = (i: number) => {
+    setIndex(i);
+    setResetKey((k) => k + 1);
+  };
+
+  return <section className="how" id="how-it-works" aria-labelledby="how-title"><div className="wrap">
     <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">two simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
-    <div className="scroller">
-      <div className="sc-sticky" ref={stickyRef} style={isPastRange ? { visibility: 'hidden' } : undefined}>
-        <div className="sc-caption" aria-live="polite">
-          {screens.map((screen, index) => <div className={`sc-caption-item ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image}><span className="node">{index + 1}</span><h3>{screen.title}</h3><p>{screen.text}</p></div>)}
-        </div>
-        <div className="phone" ref={phoneRef}><div className="slot has-img">{screens.map((screen, index) => <img className={`sc-img ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image} src={`/images/${screen.image}`} data-step={index + 1} alt={screen.alt} loading="lazy" />)}</div></div>
-        <div className="sc-dots" aria-hidden="true">{screens.map((screen, index) => <i className={currentStep === index + 1 ? 'on' : ''} key={screen.image} />)}</div>
+    <div className="hiw-card reveal" ref={cardRef}>
+      <div className="phone"><div className="slot has-img">
+        {screens.map((screen, i) => <img className={`sc-img ${i === index ? 'on' : ''}`} key={screen.image} src={`/images/${screen.image}`} alt={screen.alt} loading="lazy" />)}
+      </div></div>
+      <div className="sc-caption" aria-live="polite">
+        {screens.map((screen, i) => <div className={`sc-caption-item ${i === index ? 'on' : ''}`} key={screen.image}><span className="node">{i + 1}</span><h3>{screen.title}</h3><p>{screen.text}</p></div>)}
       </div>
-      <div className="sc-steps" aria-hidden="true">{screens.map((screen, index) => <div className="sc-step" data-step={index + 1} key={screen.image} ref={stepRefs[index]} style={{ height: spacerHeight }} />)}</div>
+      <div className="sc-dots">
+        {screens.map((screen, i) => <button
+          key={screen.image}
+          type="button"
+          className={i === index ? 'on' : ''}
+          aria-label={`Show step ${i + 1} of ${screens.length}`}
+          aria-current={i === index}
+          onClick={() => goTo(i)}
+        />)}
+      </div>
     </div>
   </div></section>;
 }
