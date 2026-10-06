@@ -3,8 +3,9 @@ import { usePhoneScroller } from '../hooks/usePhoneScroller';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
+  { title: 'Click camera', text: 'Tap the camera tab from the home screen.', image: 'click-camera-tab.jpg', alt: 'The My Gold Work home screen with the Camera tab circled and an arrow pointing to it' },
   { title: 'Start the try-on', text: 'One tap and the camera opens, ready to go.', image: '09.jpg', alt: "The Free Try-On screen with a Got it, Let's Try button" },
-  { title: 'See it live', text: 'The design shows on the customer, live, through the camera.', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
+  { title: 'Pick your choice and see it live', text: 'The design shows on the customer, live, through the camera.', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
 // desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
@@ -81,7 +82,7 @@ export default function HowItWorks() {
   }, []);
   const spacerHeight = stickyHeight > 0 ? `${Math.round(stickyHeight * STEP_SCROLL_RATIO)}px` : '1px';
   return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
-    <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">two simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
+    <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef} style={isPastRange ? { visibility: 'hidden' } : undefined}>
         <div className="sc-caption" aria-live="polite">
