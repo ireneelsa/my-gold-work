@@ -8,7 +8,7 @@ const IMAGES = [
   { src: '/images/14.jpg', alt: 'Hand holding a phone showing a gold necklace product page while a finger taps the Share button, in a busy jewellery shop with staff at the counter' },
   { src: '/images/share-sheet-inhand.jpg', alt: 'Hand holding a phone showing the share sheet for a gold necklace link, with WhatsApp and contacts to share it to, jewellery shop in the background' },
   { src: '/images/whatsapp-forward-inhand.jpg', alt: 'Hand holding a phone showing a WhatsApp chat with a forwarded gold necklace link from the shop, jewellery shop in the background' },
-  { src: '/images/live-tryon-inhand.jpg', alt: 'Hand holding a phone showing a gold necklace live try-on on a customer, jewellery shop in the background' },
+  { src: '/images/live-tryon-necklace-inhand.jpg', alt: 'Hand holding a phone showing a gold and gemstone necklace live try-on on a customer, jewellery shop in the background' },
 ] as const;
 
 const INTERVAL_MS = 3000;
