@@ -4,7 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
   { title: 'Click camera', image: 'click-camera-tap-inhand.png', alt: 'A finger tapping the Camera tab at the bottom of the My Gold Work home screen' },
-  { title: 'Start the try-on', image: '09.jpg', alt: "The Free Try-On screen with a Got it, Let's Try button" },
+  { title: 'Start the try-on', image: 'try-on-modal.jpg', alt: "The Try-On screen with a Got it, Let's Try button" },
   { title: 'Pick your choice and see it live', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
