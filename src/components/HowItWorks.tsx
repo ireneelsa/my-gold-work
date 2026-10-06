@@ -3,7 +3,7 @@ import { usePhoneScroller } from '../hooks/usePhoneScroller';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
-  { title: 'Click camera', image: 'click-camera-tab.jpg', alt: 'The My Gold Work home screen, with Home, Catalogue, Camera and Profile tabs along the bottom' },
+  { title: 'Click camera', image: 'click-camera-tap-inhand.png', alt: 'A finger tapping the Camera tab at the bottom of the My Gold Work home screen' },
   { title: 'Start the try-on', image: '09.jpg', alt: "The Free Try-On screen with a Got it, Let's Try button" },
   { title: 'Pick your choice and see it live', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
@@ -88,7 +88,10 @@ export default function HowItWorks() {
         <div className="sc-caption" aria-live="polite">
           {screens.map((screen, index) => <div className={`sc-caption-item ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image}><span className="node">{index + 1}</span><h3>{screen.title}</h3></div>)}
         </div>
-        <div className="phone" ref={phoneRef}><div className="slot has-img">{screens.map((screen, index) => <img className={`sc-img ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image} src={`/images/${screen.image}`} data-step={index + 1} alt={screen.alt} loading="lazy" />)}</div></div>
+        <div className="phone-area" ref={phoneRef}>
+          <img className={`sc-standalone ${currentStep === 1 ? 'on' : ''}`} src={`/images/${screens[0].image}`} alt={screens[0].alt} loading="lazy" />
+          <div className={`phone ${currentStep === 1 ? 'off' : ''}`}><div className="slot has-img">{screens.slice(1).map((screen, index) => <img className={`sc-img ${currentStep === index + 2 ? 'on' : ''}`} key={screen.image} src={`/images/${screen.image}`} data-step={index + 2} alt={screen.alt} loading="lazy" />)}</div></div>
+        </div>
         <div className="sc-dots" aria-hidden="true">{screens.map((screen, index) => <i className={currentStep === index + 1 ? 'on' : ''} key={screen.image} />)}</div>
       </div>
       <div className="sc-steps" aria-hidden="true">{screens.map((screen, index) => <div className="sc-step" data-step={index + 1} key={screen.image} ref={stepRefs[index]} style={{ height: spacerHeight }} />)}</div>
