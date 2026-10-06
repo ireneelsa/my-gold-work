@@ -163,7 +163,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .phone{position:absolute;inset:0;padding:9px;border-radius:40px;background:var(--ink);box-shadow:0 24px 48px rgba(16,19,17,.22);opacity:1;transition:opacity .35s ease}
 .phone.off{opacity:0}
 .phone .slot{position:relative;width:100%;height:100%;border-radius:31px;background:#F7F0DC;overflow:hidden}
-.sc-standalone{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .5s ease}
+/* the source photo's own phone bezel only spans ~77% of the frame (a hand reaches in beside it),
+   so contain-fitting it renders visibly smaller than the fake-bezel .phone used elsewhere - scale
+   up so the phone itself matches size, letting the hand spill past the box (nothing's cropped,
+   phone-area has no overflow:hidden) */
+.sc-standalone{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.3);opacity:0;transition:opacity .5s ease}
 .sc-standalone.on{opacity:1}
 .scroller{display:block;margin-top:72px}
 .sc-sticky{position:sticky;top:92px;z-index:5;display:grid;grid-template-columns:auto 420px;grid-template-areas:"phone caption" "dots dots";align-items:center;justify-content:center;column-gap:64px;row-gap:16px;padding:16px 0 24px;background:var(--gold)}
