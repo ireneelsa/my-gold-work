@@ -3,7 +3,7 @@ import { usePhoneScroller } from '../hooks/usePhoneScroller';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
-  { title: 'Click camera', image: 'click-camera-tab.jpg', alt: 'The My Gold Work home screen with the Camera tab circled and an arrow pointing to it' },
+  { title: 'Click camera', image: 'click-camera-tab.jpg', alt: 'The My Gold Work home screen, with Home, Catalogue, Camera and Profile tabs along the bottom' },
   { title: 'Start the try-on', image: '09.jpg', alt: "The Free Try-On screen with a Got it, Let's Try button" },
   { title: 'Pick your choice and see it live', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
