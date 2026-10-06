@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Cycles the "Upload your designs" feature card through the steps of adding a catalogue item:
-// the catalogue list, the Add Catalogue form, then the existing photo already used for this card.
-// Self-contained: FeaturesSection only swaps the <img> for this.
+// the catalogue list, the Add Catalogue form, the existing photo already used for this card, then
+// the live try-on result. Self-contained: FeaturesSection only swaps the <img> for this.
 const IMAGES = [
   { src: '/images/catalogue-add-tap-inhand.jpg', alt: 'Hand holding a phone showing the All catalogue list with several jewellery categories and a finger tapping the Add Catalogue button, jewellery shop in the background', wide: true },
   { src: '/images/add-catalogue-inhand.jpg', alt: 'Hand holding a phone showing the Add Catalogue form, with Product Name, Category, Product Type and an Add Product image field, jewellery shop in the background', wide: true },
   { src: '/images/13.jpg', alt: 'Hand holding a phone whose camera frames a gold necklace on a display bust, in a busy jewellery shop with staff at the counter', wide: false },
+  { src: '/images/live-tryon-upload-inhand.jpg', alt: 'Hand holding a phone showing a gold necklace live try-on on a customer, jewellery shop in the background', wide: true },
 ] as const;
 
 const INTERVAL_MS = 3000;
