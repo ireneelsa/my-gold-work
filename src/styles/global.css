@@ -363,7 +363,7 @@ section{scroll-margin-top:92px}
   .cards3>.slot,.cards2>.slot{scroll-snap-align:start}
   .cards3 .r45{aspect-ratio:4/5}
   .cards2 .r32{aspect-ratio:3/4.3}
-  .card .over h3{font-size:26px}
+  .card .over h3{font-size:18px}
   .cards2 .card .over{padding:12px 16px;max-width:calc(100% - 24px)}
   .cards2 .card .over h3{font-size:18px}
   .cards2 .card .over p{margin-top:4px;font-size:13px;line-height:1.4}
