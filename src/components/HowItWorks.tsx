@@ -3,7 +3,7 @@ import { usePhoneScroller } from '../hooks/usePhoneScroller';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
-  { title: 'Click Try On', image: 'try-on-tap-inhand.png', alt: 'A finger tapping the Try on button under a necklace on the My Gold Work home screen' },
+  { title: 'Click Try On', image: 'try-on-arrow.png', alt: 'An arrow pointing to the Try on button under a necklace on the My Gold Work home screen' },
   { title: 'See it live!', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
