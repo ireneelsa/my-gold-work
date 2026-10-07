@@ -4,7 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
   { title: 'Click Try On', image: 'try-on-arrow.png', alt: 'An arrow pointing to the Try on button under a necklace on the My Gold Work home screen' },
-  { title: 'See it live!', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
+  { title: 'See it live!', image: 'live-tryon-necklace-options.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, with a Necklaces tab of options below, live' },
 ] as const;
 
 // desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
