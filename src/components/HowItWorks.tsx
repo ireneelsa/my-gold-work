@@ -4,7 +4,6 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
   { title: 'Click camera', image: 'click-camera-tap-inhand.png', alt: 'A finger tapping the Camera tab at the bottom of the My Gold Work home screen' },
-  { title: 'Start the try-on', image: 'try-on-modal.jpg', alt: "The Try-On screen with a Got it, Let's Try button" },
   { title: 'Pick your choice and see it live', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
@@ -82,7 +81,7 @@ export default function HowItWorks() {
   }, []);
   const spacerHeight = stickyHeight > 0 ? `${Math.round(stickyHeight * STEP_SCROLL_RATIO)}px` : '1px';
   return <section className="how" id="how-it-works" aria-labelledby="how-title" style={{ '--phone-h': `${phoneHeight}px` } as React.CSSProperties}><div className="wrap">
-    <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">three simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
+    <div className="intro reveal" ref={introRef}><p className="label">How it works</p><h2 id="how-title">From design to sale in <em className="gi">two simple steps.</em></h2><div className="orn" aria-hidden="true"><i /></div></div>
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef} style={isPastRange ? { visibility: 'hidden' } : undefined}>
         <div className="sc-caption" aria-live="polite">
