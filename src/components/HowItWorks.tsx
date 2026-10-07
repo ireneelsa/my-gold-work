@@ -3,8 +3,8 @@ import { usePhoneScroller } from '../hooks/usePhoneScroller';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const screens = [
-  { title: 'Click camera', image: 'click-camera-tap-inhand.png', alt: 'A finger tapping the Camera tab at the bottom of the My Gold Work home screen' },
-  { title: 'Pick your choice and see it live', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
+  { title: 'Click Try On', image: 'try-on-tap-inhand.png', alt: 'A finger tapping the Try on button under a necklace on the My Gold Work home screen' },
+  { title: 'See it live!', image: '10.jpg', alt: 'LIVE TRY-ON showing a gold necklace on a customer, live' },
 ] as const;
 
 // desktop-only sizing so the phone never overflows a short viewport: header height + the sc-sticky
@@ -85,7 +85,7 @@ export default function HowItWorks() {
     <div className="scroller">
       <div className="sc-sticky" ref={stickyRef} style={isPastRange ? { visibility: 'hidden' } : undefined}>
         <div className="sc-caption" aria-live="polite">
-          {screens.map((screen, index) => <div className={`sc-caption-item ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image}><span className="node">{index + 1}</span><h3>{screen.title}</h3></div>)}
+          {screens.map((screen, index) => <div className={`sc-caption-item ${currentStep === index + 1 ? 'on' : ''}`} key={screen.image}><h3>{screen.title}</h3></div>)}
         </div>
         <div className="phone-area" ref={phoneRef}>
           <img className={`sc-standalone ${currentStep === 1 ? 'on' : ''}`} src={`/images/${screens[0].image}`} alt={screens[0].alt} loading="lazy" />
